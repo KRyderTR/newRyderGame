@@ -5,14 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simon Game</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/modal.css" />
+    <link rel="stylesheet" href="css/footer.css" />
   </head>
+
   <body>
-    <!-- Main Menu -->
-    <div class="menu-container">
-      <h1 class="menu-title">Simon Game</h1>
-      <button class="menu-button" id="start-button">Start Game</button>
-      <button class="menu-button" id="difficulty-button">Difficulty: Easy</button>
-      <button class="menu-button" id="strict-mode-button">Strict Mode: Off</button>
-    </div>
+    <header>
+      <h1 id="title">RYDER'S WORLD</h1>
+      <button id="sound-toggle" class="sound-on">🔊</button>
+    </header>
+
+    <main>
+      <div class="container">
+
+        <div id="menu-container">
+          <button class="menu-button" id="start-button">Start Game</button>
+          <button class="menu-button" id="strict-mode-toggle">
+            Strict Mode: Off
+          </button>
+          <button class="menu-button" id="difficulty-toggle">
+            Difficulty: Easy
+          </button>
+        </div>
+
+        <div class="hidden" id="simon-game-container">
+          <div id="level-display">Level: 1</div>
+          <div id="game-board">
+            <div class="button" id="red">0</div>
+            <div class="button" id="green">0</div>
+            <div class="button" id="blue">0</div>
+            <div class="button" id="yellow">0</div>
+            <div class="button" id="orange">0</div>
+            <div class="button" id="purple">0</div>
+            <div class="button" id="pink">0</div>
+            <div class="button" id="cyan">0</div>
+            <div class="button" id="brown">0</div>
+          </div>
+          <button class="menu-button" id="back-to-menu-button">Back to Menu</button>
+        </div>
+
+      </div>
+
+      <div id="game-modal" class="modal">
+        <div class="modal-content">
+          <p id="modal-message"></p>
+          <button id="modal-ok-button">OK</button>
+        </div>
+      </div>
+
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <p>&copy; 2024 Rom Charit. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="JavaScript/index.js"></script>
+    <script src="JavaScript/modal.js"></script>
   </body>
 </html>

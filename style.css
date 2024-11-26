@@ -1,65 +1,340 @@
-/* Reset basic styling */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
   
-  /* Body and Global Styles */
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #282c34;
-    color: #ffffff;
-    font-family: Arial, sans-serif;
+  html, body {
+    overflow: hidden;
+    height: 100%;
   }
   
-  /* Menu Container */
-  .menu-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    width: 90%;
-    max-width: 400px; /* limits the width on larger screens */
+    /* || BODY */
+  
+  body {
+    background-image: url("/images/simon-game-background.png");
+    background-size: cover;
+    font-family: monospace, sans-serif, cursive;
+    font-weight: bold;
     text-align: center;
   }
   
-  /* Title Styling */
-  .menu-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 20px;
+  /* || HEADER */
+  
+  header {
+    height: 15vh;
+    background-color: rgb(77, 30, 72, 0.09);
   }
   
-  /* Button Styling */
+  #title {
+    padding-top: 10px;
+    font-family: cursive;
+    font-size: 2.5rem;
+    color: rgb(63, 37, 63);
+    cursor: default;
+  }
+  
+  #sound-toggle {
+    position: fixed;  /* Fixes the button relative to the viewport */
+    top: 10px;        /* Distance from the top of the screen */
+    left: 10px;       /* Distance from the left of the screen */
+    font-size: 22px;  /* Size of the emoji */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1000;    /* Ensures the button stays on top of other elements */
+  }
+  
+  #sound-toggle.sound-on {
+    color: green; 
+  }
+  
+  #sound-toggle.sound-off {
+    color: red; 
+  }
+  
+  /* || MAIN */
+  
+  .container {
+    position: relative;
+    height: 70vh; /* Full height of the viewport */
+    width: 100vw;  /* Full width of the viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #menu-container, #simon-game-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease-in-out; /* Smooth transition */
+  }
+  
+  #menu-container {
+    font-size: 1.3rem;
+    z-index: 2;
+    gap: 20px;
+    /* border: 1px solid #000; */
+  }
+  
   .menu-button {
-    padding: 15px 20px;
-    font-size: 1.1rem;
-    color: #282c34;
-    background-color: #61dafb;
+    font: inherit;
+    width: 300px;
+    height: 50px;
+    border: 1px solid #000;
+    border-radius: 7px;
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+  
+  .menu-button.menuButtonClicked {
+    border-color: goldenrod;
+    color: goldenrod;
+  }
+  
+  .menu-button:hover {
+    opacity: 0.7;
+  }
+  
+  /* || GAME-BOARD */
+  
+  #simon-game-container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    /* display: grid;
+    place-items: center; */
+    color: black;
+    text-align: center;
+    opacity: 0; /* Hidden by default */
+    z-index: 1;
+  }
+  
+  .hidden {
+    opacity: 0;
+    pointer-events: none; /* Disable interaction when hidden */
+  }
+  
+  #level-display {
+    font-size: 24px;
+    text-align: center;
+    cursor: default;
+    margin-bottom: 5px;
+  }
+  
+  #game-board {
+    display: grid;
+    grid-template-columns: repeat(2, auto); /* Change from 2 to 3 columns */
+    /* grid-template-rows: repeat(2, 100px); */
+    gap: 10px;
+    text-align: center;
+    border: 1px solid #000;
+    border-radius: 20px;
+    padding: 10px;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.1);
+    width: fit-content;
+  }
+  
+  .button {
+    font: inherit;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 50px;
+    color: rgb(221, 216, 209, 0);
+    transition: 0.2s ease;
+  }
+  
+  #red {
+    background-color: rgba(176, 36, 36, 0.6);
+  }
+  
+  #green {
+    background-color: rgb(46, 147, 46, 0.5);
+  }
+  
+  #blue {
+    background-color: rgb(55, 55, 198, 0.6);
+  }
+  
+  #yellow {
+    background-color: rgba(222, 211, 52, 0.7);
+  }
+  
+  #orange {
+    background-color: rgb(255, 165, 0, 0.5); 
+  }
+  
+  #purple {
+    background-color: rgb(128, 0, 128, 0.6); 
+  }
+  
+  #pink {
+    background-color: rgba(255, 105, 180, 0.6); 
+  }
+  
+  #cyan {
+    background-color: rgba(0, 255, 255, 0.6); 
+  }
+  
+  #brown {
+    background-color: rgba(139, 69, 19, 0.7); 
+  }
+  
+  .button.active {
+    border-color: whitesmoke;
+    color: whitesmoke;
+  }
+  
+  .button.playerClicked {
+    opacity: 0.3;
+  }
+  
+  #back-to-menu-button {
+    margin-top: 10px;
+    width: 160px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 3px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    font-family: monospace;
+  }
+  
+  /* || FOOTER  */
+  
+  footer {
+    position: relative;
+    height: 15vh;
+    bottom: 0;
+    cursor: default;
+  }
+  
+  .footer-content {
+    position: absolute;
+    bottom: 0;
+    background-color: rgb(77, 30, 72, 0.2);
+    color: #fff;
+    padding: 3px;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .footer-content p {
+    font-family: monospace;
+  }
+  
+  /* || MODAL */
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 230px auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  #modal-ok-button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 100%; /* full width of the container */
-    transition: background-color 0.3s ease;
   }
   
-  /* Button Hover Effect */
-  .menu-button:hover {
-    background-color: #21a1f1;
+  #modal-ok-button:hover {
+    background-color: #45a049;
   }
   
-  /* Responsive Font Sizing */
-  @media (max-width: 600px) {
-    .menu-title {
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    #game-board {
+      grid-template-columns: repeat(3, 1fr); /* 3 columns for smaller screens */
+    }
+  
+    .button {
+      width: 60px;
+      height: 60px;
+      font-size: 1.5rem;
+    }
+  
+    #title {
       font-size: 2rem;
     }
-    .menu-button {
-      font-size: 1rem;
-      padding: 12px 16px;
+  
+    #level-display {
+      font-size: 1.2rem;
     }
   }
+  
+  @media (max-width: 480px) {
+    #game-board {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile screens */
+    }
+  
+    .button {
+      width: 50px;
+      height: 50px;
+      font-size: 1.2rem;
+    }
+  
+    #title {
+      font-size: 1.5rem;
+    }
+  
+    .menu-button {
+      width: 90%;
+      max-width: none;
+    }
+  
+    #level-display {
+      font-size: 1rem;
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
