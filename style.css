@@ -322,6 +322,7 @@ footer {
   .menu-button {
     width: 90%;
     max-width: none;
+    color: #000;
   }
 
   #level-display {
