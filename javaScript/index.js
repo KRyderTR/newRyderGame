@@ -6,6 +6,7 @@ let difficultyLevel = 0;
 let counter = 0;
 let inGame = false;
 let soundEnabled = true;
+let clickable = false; // A flag to control whether clicks are allowed while board display
 
 // Start the game by initializing the variables and advancing to the first round
 const startGame = () => {
@@ -64,15 +65,26 @@ const randomColor = () => {
 // Visually display the sequence to the player
 const displaySequence = () => {
   inGame = true;
+  disableBoard(); // Disable the board before starting the display
+
   let i = 0;
   const interval = setInterval(() => {
-    activateButton(sequence[i]);
+    activateButton(sequence[i]); // Show the button
     i++;
     if (i >= sequence.length) {
       clearInterval(interval);
+      enableBoard(); // Re-enable the board after the sequence is done
     }
   }, 1000);
   counter = 0;
+};
+
+const enableBoard = () => {
+  clickable = true;
+};
+
+const disableBoard = () => {
+  clickable = false;
 };
 
 // Activate a button with visual and sound effects
@@ -96,23 +108,32 @@ const playSound = (sound) => {
   }
 };
 
+
 // Update the level display on the screen
 const updateLevelDisplay = () => {
   document.getElementById("level-display").textContent = `Level: ${level}`;
 };
 
+
 // Handle user input and check if it matches the sequence
 document.querySelectorAll(".button").forEach((button) => {
   button.addEventListener("click", (e) => {
+    if (!clickable) return; // Ignore clicks if the board isn't clickable
+
     button.classList.add("playerClicked");
+
+    // Play sound when the button is clicked
     let sound = "/sounds/mouse-click-sound";
     playSound(sound);
+
+    // Remove the 'playerClicked' class after a short delay
     setTimeout(() => button.classList.remove("playerClicked"), 200);
 
+    // Handle game logic if the game is active
     if (inGame) {
-      const color = e.target.id;
-      playerSequence.push(color);
-      checkPlayerInput();
+      const color = e.target.id; // Get the color of the clicked button
+      playerSequence.push(color); // Add the color to the player's sequence
+      checkPlayerInput(); // Check if the player's input is correct
     }
   });
 });
