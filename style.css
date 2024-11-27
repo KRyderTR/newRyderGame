@@ -13,7 +13,7 @@ body {
 /* || BODY */
 
 body {
-  background-image: url("/images/simon-game-background.png");
+  background-image: url("images/simon-game-background.png");
   background-size: cover;
   font-family: monospace, sans-serif, cursive;
   font-weight: bold;
