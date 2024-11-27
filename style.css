@@ -15,7 +15,7 @@ body {
 body {
   background-image: url("images/simon-game-background.png");
   background-size: cover;
-  font-family: monospace, sans-serif, cursive;
+  font-family: 'Lucida Console', Monaco, monospace;
   font-weight: bold;
   text-align: center;
 }
@@ -29,7 +29,7 @@ header {
 
 #title {
   padding-top: 10px;
-  font-family: cursive;
+  font-family: 'Lucida Console', Monaco, monospace;
   font-size: 2.5rem;
   color: rgb(63, 37, 63);
   cursor: default;
@@ -219,7 +219,7 @@ header {
   padding: 3px;
   border: 1px solid #000;
   border-radius: 5px;
-  font-family: monospace;
+  font-family: 'Lucida Console', Monaco, monospace;
 }
 
 /* || FOOTER  */
@@ -242,7 +242,7 @@ footer {
 }
 
 .footer-content p {
-  font-family: monospace;
+  font-family: 'Lucida Console', Monaco, monospace;;
 }
 
 /* || MODAL */
