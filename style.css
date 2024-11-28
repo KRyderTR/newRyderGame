@@ -86,15 +86,16 @@ header {
   gap: 20px;
   border: 1px solid rgb(77, 30, 72, 0.09);
   background-color: rgb(77, 30, 72, 0.15);
+  border-radius: 15px;
 }
 
 .menu-button {
   font: inherit;
-  color: #cbb284;
+  color: #d9a319;;
   width: 90%;
-  height: 50px;
-  border: 1px solid #000;
-  border-radius: 7px;
+  height: 55px;
+  border: 1px solid rgba(108, 63, 182, 0.801);
+  border-radius: 0;
   background-color: rgba(108, 63, 182, 0.801);
   cursor: pointer;
   transition: 0.2s ease;
