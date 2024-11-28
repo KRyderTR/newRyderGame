@@ -23,21 +23,21 @@ body {
 /* || HEADER */
 
 header {
-  height: 15vh;
+  height: 9vh;
   background-color: rgb(77, 30, 72, 0.09);
 }
 
 #title {
-  padding-top: 10px;
+  padding-top: 20px;
   font-family: 'Lucida Console', Monaco, monospace;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   color: rgb(63, 37, 63);
   cursor: default;
 }
 
 #sound-toggle {
   position: fixed; /* Fixes the button relative to the viewport */
-  top: 10px; /* Distance from the top of the screen */
+  top: 13px; /* Distance from the top of the screen */
   left: 10px; /* Distance from the left of the screen */
   font-size: 22px; /* Size of the emoji */
   background: none;
@@ -58,7 +58,7 @@ header {
 /* || MAIN */
 
 .container {
-  position: relative;
+  /* position: relative; */
   height: 70vh; /* Full height of the viewport */
   width: 100vw; /* Full width of the viewport */
   display: flex;
@@ -69,11 +69,9 @@ header {
 #menu-container,
 #simon-game-container {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
+  height: 70%;
+  width: 90%;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -82,22 +80,25 @@ header {
 }
 
 #menu-container {
+  height: 350px;
   font-size: 1.3rem;
-  z-index: 2;
+  z-index: 1;
   gap: 20px;
-  /* border: 1px solid #000; */
+  border: 1px solid rgb(77, 30, 72, 0.09);
+  background-color: rgb(77, 30, 72, 0.15);
 }
 
 .menu-button {
   font: inherit;
-  color: #000;
-  width: 300px;
+  color: #cbb284;
+  width: 90%;
   height: 50px;
   border: 1px solid #000;
   border-radius: 7px;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(108, 63, 182, 0.801);
   cursor: pointer;
   transition: 0.2s ease;
+  z-index: 2;
 }
 
 .menu-button.menuButtonClicked {
@@ -118,6 +119,8 @@ header {
   justify-content: center;
   align-items: center;
   gap: 5px;
+  /* display: grid;
+    place-items: center; */
   color: black;
   text-align: center;
   opacity: 0; /* Hidden by default */
@@ -224,25 +227,18 @@ header {
 
 /* || FOOTER  */
 
-footer {
-  position: relative;
-  height: 15vh;
-  bottom: 0;
-  cursor: default;
-}
-
 .footer-content {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   background-color: rgb(77, 30, 72, 0.2);
   color: #fff;
-  padding: 3px;
+  padding: 13px;
   text-align: center;
   width: 100%;
 }
 
 .footer-content p {
-  font-family: 'Lucida Console', Monaco, monospace;;
+  font-family: 'Lucida Console', Monaco, monospace;
 }
 
 /* || MODAL */
@@ -284,10 +280,42 @@ footer {
 }
 
 /* Responsive Styles */
-@media (max-width: 768px) {
-  #game-board {
-    grid-template-columns: repeat(3, 1fr); /* 3 columns for smaller screens */
+@media (min-width: 480px) {
+
+  .button {
+    width: 80px;
+    height: 80px;
   }
+
+  #title {
+    font-size: 2.5rem;
+  }
+
+  #menu-container {
+    max-width: 400px;
+    max-height: 350px;
+  }
+
+  .menu-button {
+    width: 90%;
+    max-width: none;
+    color: #cb9c27;
+  }
+
+  #level-display {
+    font-size: 1.5rem;
+  }
+
+  #title {
+    padding-top: 10px;
+  }
+  
+  #sound-toggle {
+    top: 1px; /* Distance from the top of the screen */
+  }
+}
+
+@media (min-width: 768px) {
 
   .button {
     width: 60px;
@@ -296,37 +324,19 @@ footer {
   }
 
   #title {
-    font-size: 2rem;
+    font-size: 3rem;
   }
 
   #level-display {
-    font-size: 1.2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  #game-board {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile screens */
-  }
-
-  .button {
-    width: 50px;
-    height: 50px;
     font-size: 1.2rem;
   }
 
   #title {
-    font-size: 1.5rem;
+    padding-top: 10px;
   }
-
-  .menu-button {
-    width: 90%;
-    max-width: none;
-    color: #000;
-  }
-
-  #level-display {
-    font-size: 1rem;
+  
+  #sound-toggle {
+    top: 1px; /* Distance from the top of the screen */
   }
 }
 
