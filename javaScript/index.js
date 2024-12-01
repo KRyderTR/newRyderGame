@@ -30,8 +30,10 @@ const updateBoard = () => {
   const isMedium = difficultyLevel === 1;
   const isHard = difficultyLevel === 2;
 
-  document.getElementById("orange").style.display = isMedium || isHard ? "block" : "none";
-  document.getElementById("purple").style.display = isMedium || isHard ? "block" : "none";
+  document.getElementById("orange").style.display =
+    isMedium || isHard ? "block" : "none";
+  document.getElementById("purple").style.display =
+    isMedium || isHard ? "block" : "none";
   document.getElementById("pink").style.display = isHard ? "block" : "none";
   document.getElementById("cyan").style.display = isHard ? "block" : "none";
   document.getElementById("brown").style.display = isHard ? "block" : "none";
@@ -45,22 +47,33 @@ const updateBoard = () => {
   } else {
     gameBoard.style.gridTemplateColumns = "repeat(2, auto)";
   }
-};
 
+};
 
 // Generate a random color for the sequence
 const randomColor = () => {
   let colors = ["red", "green", "blue", "yellow"];
 
-  if (difficultyLevel === 1) { // Medium (6 boxes)
+  if (difficultyLevel === 1) {
+    // Medium (6 boxes)
     colors = ["red", "green", "blue", "yellow", "orange", "purple"];
-  } else if (difficultyLevel === 2) { // Hard (9 boxes)
-    colors = ["red", "green", "blue", "yellow", "orange", "purple", "pink", "cyan", "brown"];
+  } else if (difficultyLevel === 2) {
+    // Hard (9 boxes)
+    colors = [
+      "red",
+      "green",
+      "blue",
+      "yellow",
+      "orange",
+      "purple",
+      "pink",
+      "cyan",
+      "brown",
+    ];
   }
 
   return colors[Math.floor(Math.random() * colors.length)];
 };
-
 
 // Visually display the sequence to the player
 const displaySequence = () => {
@@ -91,13 +104,13 @@ const disableBoard = () => {
 const activateButton = (color) => {
   const button = document.getElementById(color);
   if (inGame) {
-    counter++;
-    document.getElementById(color).textContent = `${counter}`;
+    // counter++;
+    // document.getElementById(color).textContent = `${counter}`;
+    button.classList.add("active");
+    let sound = "/sounds/ding";
+    playSound(sound);
+    setTimeout(() => button.classList.remove("active"), 500);
   }
-  button.classList.add("active");
-  let sound = "/sounds/ding";
-  playSound(sound);
-  setTimeout(() => button.classList.remove("active"), 500);
 };
 
 // Play the sound associated with each button
@@ -108,12 +121,10 @@ const playSound = (sound) => {
   }
 };
 
-
 // Update the level display on the screen
 const updateLevelDisplay = () => {
   document.getElementById("level-display").textContent = `Level: ${level}`;
 };
-
 
 // Handle user input and check if it matches the sequence
 document.querySelectorAll(".button").forEach((button) => {
@@ -151,7 +162,7 @@ const checkPlayerInput = () => {
       showModal("Game Over!", true); // Show modal and restart game
     } else {
       inGame = false;
-      showModal("Incorrect! Try again."); // Show modal and let player try again
+      showModal("Incorrect, Try again!"); // Show modal and let player try again
       playerSequence = [];
     }
   }
@@ -237,10 +248,20 @@ document.getElementById("start-button").addEventListener("click", () => {
 
 // Game-board to menu-button transition
 document.getElementById("back-to-menu-button").addEventListener("click", () => {
-  document.getElementById("simon-game-container").classList.add("hidden"); // Hide the menu
+  // Stop the game and reset variables
+  inGame = false;
+  playerSequence = [];
+  sequence = [];
+  level = 1;
+  clickable = false;
+  counter = 0; // Disable board interaction
+
+  document.getElementById("simon-game-container").classList.add("hidden"); // Hide the board
   document.getElementById("menu-container").classList.remove("hidden");
   document.getElementById("simon-game-container").style.opacity = 0;
   setTimeout(() => {
     document.getElementById("menu-container").style.opacity = 1; // Show the game board
   }, 500); // Adjust delay to match CSS transition
 });
+
+

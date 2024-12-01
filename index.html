@@ -9,39 +9,50 @@
 
   <body>
     <header>
-      <h1 id="title">RYDER'S WORLD</h1>
+      <!-- <h1 id="title">RYDER'S WORLD</h1> -->
       <button id="sound-toggle" class="sound-on">🔊</button>
     </header>
 
     <main>
       <div class="container">
-
         <div id="menu-container">
-          <button class="menu-button" id="start-button">Start Game</button>
-          <button class="menu-button" id="strict-mode-toggle">
-            Strict Mode: Off
-          </button>
-          <button class="menu-button" id="difficulty-toggle">
-            Difficulty: Easy
-          </button>
+          <!-- <button id="sound-toggle" class="sound-on">🔊</button> -->
+          <h1 id="title">
+            <span id="title-text">SIMON GAME</span>
+          </h1>
+          <div id="menu-buttons-container">
+            <button class="menu-button" id="start-button">
+              <span>Start Game</span>
+            </button>
+            <button class="menu-button" id="strict-mode-toggle">
+              <span>Strict Mode: Off</span>
+            </button>
+            <button class="menu-button" id="difficulty-toggle">
+              <span>Difficulty: Easy</span>
+            </button>
+            <button id="instructions-btn">
+              <span>Instructions</span>
+            </button>
+          </div>
         </div>
 
         <div class="hidden" id="simon-game-container">
           <div id="level-display">Level: 1</div>
           <div id="game-board">
-            <div class="button" id="red">0</div>
-            <div class="button" id="green">0</div>
-            <div class="button" id="blue">0</div>
-            <div class="button" id="yellow">0</div>
-            <div class="button" id="orange">0</div>
-            <div class="button" id="purple">0</div>
-            <div class="button" id="pink">0</div>
-            <div class="button" id="cyan">0</div>
-            <div class="button" id="brown">0</div>
+            <div class="button" id="red"></div>
+            <div class="button" id="green"></div>
+            <div class="button" id="blue"></div>
+            <div class="button" id="yellow"></div>
+            <div class="button" id="orange"></div>
+            <div class="button" id="purple"></div>
+            <div class="button" id="pink"></div>
+            <div class="button" id="cyan"></div>
+            <div class="button" id="brown"></div>
           </div>
-          <button class="menu-button" id="back-to-menu-button">Back to Menu</button>
+          <button class="menu-button" id="back-to-menu-button">
+            Back to Menu
+          </button>
         </div>
-
       </div>
 
       <div id="game-modal" class="modal">
@@ -51,6 +62,44 @@
         </div>
       </div>
 
+      <div id="instructions-modal" class="hidden1">
+        <div class="modal-content">
+          <h2>Instructions</h2>
+          <br />
+          <ol class="instructions-list">
+            <li>
+              <span class="instruction-text"
+                >The game will show a sequence of colors.</span
+              >
+            </li>
+            <li>
+              <span class="instruction-text"
+                >You need to repeat the sequence by clicking the matching
+                buttons.</span
+              >
+            </li>
+            <li>
+              <span class="instruction-text"
+                >If you get the sequence right, the game progresses to the next
+                round.</span
+              >
+            </li>
+            <li>
+              <span class="instruction-text"
+                >If you make a mistake, you can either try again (in normal
+                mode) or restart the game (in strict mode).</span
+              >
+            </li>
+            <li>
+              <span class="instruction-text"
+                >The game ends when you successfully complete all levels.</span
+              >
+            </li>
+          </ol>
+
+          <button id="close-instructions-btn">Close</button>
+        </div>
+      </div>
     </main>
 
     <footer>
@@ -61,5 +110,6 @@
 
     <script src="javaScript/index.js"></script>
     <script src="javaScript/modal.js"></script>
+    <script src="javaScript/instructions.js"></script>
   </body>
 </html>
