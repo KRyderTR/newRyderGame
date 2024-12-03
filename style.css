@@ -443,9 +443,18 @@ footer {
   }
 
   .button {
-    width: 70px;
-    height: 70px;
-    font-size: 35px;
+    width: 65px;
+    height: 65px;
+  }
+
+  #level-display {
+    font-size: 1.4rem;
+  }
+
+  #back-to-menu-button {
+    font-size: medium;
+    width: 150px;
+    height: 30px;
   }
 
   #instructions-modal {
@@ -454,8 +463,8 @@ footer {
   }
 
   #instructions-modal .modal-content {
-    padding: 15px;
-    font-size: 14px; /* Compact font size */
+    padding: 14px;
+    font-size: 12px; /* Compact font size */
   }
 
   #close-instructions-btn {
