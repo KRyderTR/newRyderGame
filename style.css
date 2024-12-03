@@ -12,7 +12,7 @@ body {
   font-family: "Lucida Console", Monaco, monospace;
   height: 100vh;
   text-align: center;
-  overflow: hidden;
+  /* overflow: hidden; */
   display: flex;
   flex-direction: column;
 }
@@ -51,7 +51,7 @@ footer {
 
 #title-text {
   text-shadow: 0 0 5px #31073c;
-  font-size: 60px;
+  font-size: 45px;
   font-weight: bolder;
   color: rgba(133, 198, 219, 0.791);
 }
@@ -143,11 +143,12 @@ footer {
 
 #instructions-btn {
   font: inherit;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(46, 132, 164, 0.37);
   font-size: large;
-  text-decoration: underline;
-  border: none;
-  color: #260942a3;
+  border: 1px solid rgba(179, 201, 209, 0.501);
+  color: #090809fb;
+  padding: 7px 40px;
+  border-radius: 15px;
 }
 
 /* || GAME-BOARD */
@@ -258,8 +259,7 @@ footer {
 }
 
 .button.active {
-  border-color: rgba(245, 245, 245, 0.744);
-  color: rgba(245, 245, 245, 0.744);
+  border: 3px solid rgba(245, 245, 245, 0.744);
 }
 
 .button.playerClicked {
@@ -324,7 +324,9 @@ footer {
   top: 50%; /* Center vertically */
   left: 50%; /* Center horizontally */
   transform: translate(-50%, -50%); /* Center using its own dimensions */
-  width: 90%;
+  width: 90%; /* Default width for smaller screens */
+  max-width: 600px; /* Limit the maximum width */
+  max-height: 90vh; /* Ensure it doesn't exceed the viewport height */
   background-color: rgba(0, 0, 0, 0.7);
   display: none; /* Initially hidden */
   justify-content: center;
@@ -334,8 +336,10 @@ footer {
 
 #instructions-modal .modal-content {
   background-color: white;
-  padding: 30px;
+  padding: 20px;
   border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Add a shadow for better visibility */
+  font-size: 16px;
 }
 
 .hidden1 {
@@ -357,10 +361,6 @@ footer {
   color: #333; /* Change the color of the numbers */
 }
 
-.instruction-text {
-  display: inline; /* Ensures the text stays inline */
-}
-
 #close-instructions-btn {
   padding: 10px 20px;
   margin-top: 15px;
@@ -369,6 +369,12 @@ footer {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+#close-instructions-btn:hover {
+  background-color: #45a049; /* Slightly darker green on hover */
 }
 
 /* Responsive Styles */
@@ -391,6 +397,16 @@ footer {
   #sound-toggle {
     top: 1px; /* Distance from the top of the screen */
   }
+
+  #instructions-modal {
+    width: 85%;
+    max-width: 500px; /* Adjust for larger screens */
+  }
+
+  #instructions-modal .modal-content {
+    padding: 20px; /* Add more padding for readability */
+    font-size: 15px; /* Slightly larger font for medium screens */
+  }
 }
 
 /* PC browser */
@@ -402,6 +418,20 @@ footer {
 
   #level-display {
     font-size: 1.8rem;
+  }
+
+  #instructions-modal {
+    width: 75%;
+    max-width: 600px; /* Adjust for desktop view */
+  }
+
+  #instructions-modal .modal-content {
+    padding: 20px;
+    font-size: 16px; /* Larger font for desktops */
+  }
+
+  #close-instructions-btn {
+    font-size: 18px; /* Adjust button size */
   }
 }
 
@@ -416,5 +446,20 @@ footer {
     width: 70px;
     height: 70px;
     font-size: 35px;
+  }
+
+  #instructions-modal {
+    width: 95%;
+    max-height: 80vh; /* Adjust height for landscape */
+  }
+
+  #instructions-modal .modal-content {
+    padding: 15px;
+    font-size: 14px; /* Compact font size */
+  }
+
+  #close-instructions-btn {
+    font-size: 14px; /* Smaller button size */
+    padding: 8px 15px; /* Compact padding */
   }
 }

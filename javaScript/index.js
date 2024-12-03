@@ -107,7 +107,7 @@ const activateButton = (color) => {
     // counter++;
     // document.getElementById(color).textContent = `${counter}`;
     button.classList.add("active");
-    let sound = "/sounds/ding";
+    let sound = "sounds/ding";
     playSound(sound);
     setTimeout(() => button.classList.remove("active"), 500);
   }
@@ -134,7 +134,7 @@ document.querySelectorAll(".button").forEach((button) => {
     button.classList.add("playerClicked");
 
     // Play sound when the button is clicked
-    let sound = "/sounds/mouse-click-sound";
+    let sound = "sounds/mouse-click-sound";
     playSound(sound);
 
     // Remove the 'playerClicked' class after a short delay
@@ -186,10 +186,10 @@ document.querySelectorAll(".menu-button").forEach((button) => {
   button.addEventListener("click", (e) => {
     button.classList.add("menuButtonClicked");
     if (e.target.id === "start-button") {
-      let sound = "/sounds/game-start-sound";
+      let sound = "sounds/game-start-sound";
       playSound(sound);
     } else {
-      let sound = "/sounds/mouse-click-sound";
+      let sound = "sounds/mouse-click-sound";
       playSound(sound);
     }
     setTimeout(() => button.classList.remove("menuButtonClicked"), 200);
@@ -206,7 +206,7 @@ document.getElementById("sound-toggle").addEventListener("click", () => {
 const updateSoundButton = () => {
   const soundButton = document.getElementById("sound-toggle");
   if (soundEnabled) {
-    playSound("/sounds/mouse-click-sound");
+    playSound("sounds/mouse-click-sound");
     soundButton.textContent = "🔊";
   } else {
     soundButton.textContent = "🔇";
