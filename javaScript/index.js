@@ -149,25 +149,6 @@ document.querySelectorAll(".button").forEach((button) => {
   });
 });
 
-// Check the player's input against the sequence
-const checkPlayerInput = () => {
-  const currentStep = playerSequence.length - 1;
-  if (playerSequence[currentStep] === sequence[currentStep]) {
-    if (playerSequence.length === sequence.length) {
-      level++;
-      nextRound();
-    }
-  } else {
-    if (strictMode) {
-      showModal("Game Over!", true); // Show modal and restart game
-    } else {
-      inGame = false;
-      showModal("Incorrect, Try again!"); // Show modal and let player try again
-      playerSequence = [];
-    }
-  }
-};
-
 // Toggle strict mode on and off
 document.getElementById("strict-mode-toggle").addEventListener("click", () => {
   strictMode = !strictMode;
@@ -263,5 +244,120 @@ document.getElementById("back-to-menu-button").addEventListener("click", () => {
     document.getElementById("menu-container").style.opacity = 1; // Show the game board
   }, 500); // Adjust delay to match CSS transition
 });
+
+
+
+
+// Check the player's input against the sequence
+const checkPlayerInput = () => {
+  const currentStep = playerSequence.length - 1;
+  if (playerSequence[currentStep] === sequence[currentStep]) {
+    if (playerSequence.length === sequence.length) {
+      if (strictMode) {
+        saveHighScore(level);
+        level++;
+        nextRound();
+      } else {
+        level++;
+        nextRound();
+      }
+    }
+  } else {
+    if (strictMode) {
+      saveHighScore(level);
+      showModal("Game Over!", true); // Show modal and restart game
+    } else {
+      inGame = false;
+      showModal("Incorrect, Try again!"); // Show modal and let player try again
+      playerSequence = [];
+    }
+  }
+};
+
+// Save the high score for the current difficulty level
+const saveHighScore = (score) => {
+  const highScoreKey = getHighScoreKey();
+  localStorage.setItem(highScoreKey, score);
+};
+
+// Retrieve the high score for the current difficulty level
+const getHighScore = () => {
+  const highScoreKey = getHighScoreKey();
+  return parseInt(localStorage.getItem(highScoreKey)) || 0;
+};
+
+// Get the key for the current difficulty's high score
+const getHighScoreKey = () => {
+  switch (difficultyLevel) {
+    case 0:
+      return "strictModeHighScoreEasy";
+    case 1:
+      return "strictModeHighScoreMedium";
+    case 2:
+      return "strictModeHighScoreHard";
+    default:
+      return "strictModeHighScore"; // Fallback for unexpected cases
+  }
+};
+
+// Initialize and reset high score display on page load
+document.addEventListener("DOMContentLoaded", () => {
+  displayHighScore();
+});
+
+// Retrieve the high score for a specific difficulty level
+const getHighScoreForDifficulty = (difficulty) => {
+  let key;
+  switch (difficulty) {
+    case "easy":
+      key = "strictModeHighScoreEasy";
+      break;
+    case "medium":
+      key = "strictModeHighScoreMedium";
+      break;
+    case "hard":
+      key = "strictModeHighScoreHard";
+      break;
+  }
+  return parseInt(localStorage.getItem(key)) || 0;
+};
+
+// Show all records in the modal
+const showAllRecords = () => {
+
+  const modal = document.getElementById("record-modal");
+  const overlay = document.getElementById("modal-overlay");
+
+  modal.style.display = "flex";
+  overlay.style.display = "block";
+
+  const easyRecord = getHighScoreForDifficulty("easy");
+  const mediumRecord = getHighScoreForDifficulty("medium");
+  const hardRecord = getHighScoreForDifficulty("hard");
+
+  document.getElementById("easy-record").textContent = `Easy Mode: ${easyRecord}`;
+  document.getElementById("medium-record").textContent = `Medium Mode: ${mediumRecord}`;
+  document.getElementById("hard-record").textContent = `Hard Mode: ${hardRecord}`;
+  
+};
+
+// Close the modal
+const closeModal = () => {
+  const modal = document.getElementById("record-modal");
+  const overlay = document.getElementById("modal-overlay");
+
+  modal.style.display = "none";
+  overlay.style.display = "none";
+};
+
+// Prevent clicks outside the modal from interacting with the background
+document.getElementById("modal-overlay").addEventListener("click", (event) => {
+  event.stopPropagation(); // Prevent propagation
+  closeModal(); // Close modal when clicking on the overlay
+});
+
+// Add event listeners
+document.getElementById("leftImg").addEventListener("click", showAllRecords);
+document.getElementById("close-modal").addEventListener("click", closeModal);
 
 

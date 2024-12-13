@@ -24,16 +24,27 @@
             <button class="menu-button" id="start-button">
               <span>Start Game</span>
             </button>
-            <button class="menu-button" id="strict-mode-toggle">
-              <span>Strict Mode: Off</span>
-            </button>
             <button class="menu-button" id="difficulty-toggle">
               <span>Difficulty: Easy</span>
             </button>
+            <button class="menu-button" id="strict-mode-toggle">
+              <span>Strict Mode: Off</span>
+            </button>
           </div>
-          <button id="instructions-btn">
-            <span>Instructions</span>
-          </button>
+          <div id="menu-bottom-container">
+            <img
+              class="bottomImg"
+              id="leftImg"
+              src="images/star.png"
+              alt="Left"
+            />
+            <img
+              class="bottomImg"
+              id="rightImg"
+              src="images/question-mark.png"
+              alt="Right"
+            />
+          </div>
         </div>
 
         <div class="hidden" id="simon-game-container">
@@ -62,6 +73,7 @@
         </div>
       </div>
 
+      <div id="modal-overlay" class="overlay" style="display: none;"></div>
       <div id="instructions-modal" class="hidden1">
         <div class="modal-content">
           <h2>Instructions</h2>
@@ -93,9 +105,23 @@
             </li>
           </ol>
 
-          <button id="close-instructions-btn">Close</button>
+          <button class="close-btn-menu-modal" id="close-instructions-btn">Close</button>
         </div>
       </div>
+
+      <!-- My Record Modal -->
+      <div id="modal-overlay" class="overlay" style="display: none;"></div>
+      <div id="record-modal" class="modal-3" style="display: none;">
+        <div class="modal-content-3">
+          <h2>My Record</h2><br />
+          <p id="easy-record">Easy Mode: 0</p>
+          <p id="medium-record">Medium Mode: 0</p>
+          <p id="hard-record">Hard Mode: 0</p><br />
+          <p>*Strict Mode highest level achieved</p>
+          <button class="close-btn-menu-modal" id="close-modal">Close</button>
+        </div>
+      </div>
+      
     </main>
 
     <footer>

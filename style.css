@@ -138,17 +138,37 @@ footer {
 @media (hover: hover) {
   .menu-button:hover {
     opacity: 0.8;
+    transform: scale(1.04);
   }
 }
 
-#instructions-btn {
-  font: inherit;
-  background-color: rgba(46, 132, 164, 0.37);
-  font-size: large;
-  border: 1px solid rgba(179, 201, 209, 0.501);
-  color: #090809fb;
-  padding: 7px 40px;
-  border-radius: 15px;
+#menu-bottom-container {
+  display: flex;
+  justify-content: space-between; /* Push images to opposite sides */
+  align-items: center; /* Vertically center the images */
+  gap: 100px;
+}
+
+.bottomImg {
+  width: 50px; /* Set a fixed width for the images */
+  height: 50px; /* Set a fixed height for the images */
+  object-fit: cover; /* Ensure images maintain aspect ratio */
+  cursor: pointer;
+}
+
+#leftImg {
+  margin-right: auto; /* Push the left image to the far left */
+}
+
+#rightImg {
+  margin-left: auto; /* Push the right image to the far right */
+}
+
+@media (hover: hover) {
+  .bottomImg:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
 }
 
 /* || GAME-BOARD */
@@ -361,7 +381,7 @@ footer {
   color: #333; /* Change the color of the numbers */
 }
 
-#close-instructions-btn {
+.close-btn-menu-modal {
   padding: 10px 20px;
   margin-top: 15px;
   background-color: #4caf50;
@@ -375,6 +395,32 @@ footer {
 
 #close-instructions-btn:hover {
   background-color: #45a049; /* Slightly darker green on hover */
+}
+
+/* My Record Modal */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 1000; /* Ensure it appears above all other elements */
+}
+
+.modal-3 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1001; /* Above the overlay */
+}
+
+.modal-content-3 {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
 }
 
 /* Responsive Styles */
@@ -472,4 +518,3 @@ footer {
     padding: 8px 15px; /* Compact padding */
   }
 }
-
