@@ -8,18 +8,15 @@
   </head>
 
   <body>
-    <header>
-      <!-- <h1 id="title">RYDER'S WORLD</h1> -->
-      <button id="sound-toggle" class="sound-on">🔊</button>
-    </header>
-
     <main>
       <div class="container">
         <div id="menu-container">
-          <!-- <button id="sound-toggle" class="sound-on">🔊</button> -->
-          <h1 id="title">
-            <span id="title-text">SIMON GAME</span>
-          </h1>
+          <img
+          class="simon-game-title"
+          id="game-title"
+          src="images/SIMON-GAME-12-14-2024.png"
+          alt="MainTitle"
+        />
           <div id="menu-buttons-container">
             <button class="menu-button" id="start-button">
               <span>Start Game</span>
@@ -35,14 +32,20 @@
             <img
               class="bottomImg"
               id="leftImg"
-              src="images/star.png"
+              src="images/starLogo1.png"
               alt="Left"
             />
             <img
               class="bottomImg"
               id="rightImg"
-              src="images/question-mark.png"
+              src="images/qMark1.png"
               alt="Right"
+            />
+            <img
+              class="bottomImg"
+              id="soundOnImg"
+              src="images/sound1.png"
+              alt="SoundOn"
             />
           </div>
         </div>
@@ -66,6 +69,7 @@
         </div>
       </div>
 
+      <div id="modal-overlay" class="overlay" style="display: none"></div>
       <div id="game-modal" class="modal">
         <div class="modal-content">
           <p id="modal-message"></p>
@@ -73,7 +77,7 @@
         </div>
       </div>
 
-      <div id="modal-overlay" class="overlay" style="display: none;"></div>
+      <div id="modal-overlay" class="overlay" style="display: none"></div>
       <div id="instructions-modal" class="hidden1">
         <div class="modal-content">
           <h2>Instructions</h2>
@@ -105,23 +109,26 @@
             </li>
           </ol>
 
-          <button class="close-btn-menu-modal" id="close-instructions-btn">Close</button>
+          <button class="close-btn-menu-modal" id="close-instructions-btn">
+            Close
+          </button>
         </div>
       </div>
 
       <!-- My Record Modal -->
-      <div id="modal-overlay" class="overlay" style="display: none;"></div>
-      <div id="record-modal" class="modal-3" style="display: none;">
+      <div id="modal-overlay" class="overlay" style="display: none"></div>
+      <div id="record-modal" class="modal-3" style="display: none">
         <div class="modal-content-3">
-          <h2>My Record</h2><br />
+          <h2>My Record</h2>
+          <br />
           <p id="easy-record">Easy Mode: 0</p>
           <p id="medium-record">Medium Mode: 0</p>
-          <p id="hard-record">Hard Mode: 0</p><br />
+          <p id="hard-record">Hard Mode: 0</p>
+          <br />
           <p>*Strict Mode highest level achieved</p>
           <button class="close-btn-menu-modal" id="close-modal">Close</button>
         </div>
       </div>
-      
     </main>
 
     <footer>

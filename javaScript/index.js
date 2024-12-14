@@ -177,20 +177,34 @@ document.querySelectorAll(".menu-button").forEach((button) => {
   });
 });
 
-// Add an event listener to the sound toggle button
-document.getElementById("sound-toggle").addEventListener("click", () => {
-  soundEnabled = !soundEnabled;
-  updateSoundButton();
+// Toggle the sound state and update the icon
+document.getElementById("soundOnImg").addEventListener("click", () => {
+  soundEnabled = !soundEnabled; // Toggle the state
+  updateSoundIcon(); // Update the image based on the state
 });
 
 // Update the button icon based on the sound state
-const updateSoundButton = () => {
-  const soundButton = document.getElementById("sound-toggle");
+// const updateSoundButton = () => {
+//   const soundButton = document.getElementById("sound-toggle");
+//   if (soundEnabled) {
+//     playSound("sounds/mouse-click-sound");
+//     soundButton.textContent = "🔊";
+//   } else {
+//     soundButton.textContent = "🔇";
+//   }
+// };
+
+// Update the sound icon based on the sound state
+const updateSoundIcon = () => {
+  const soundIcon = document.getElementById("soundOnImg"); // Select the <img> element directly
+
   if (soundEnabled) {
     playSound("sounds/mouse-click-sound");
-    soundButton.textContent = "🔊";
+    soundIcon.src = "images/sound1.png"; // Set to sound-on image
+    soundIcon.alt = "Sound On"; // Update the alt text
   } else {
-    soundButton.textContent = "🔇";
+    soundIcon.src = "images/mute.png"; // Set to mute image
+    soundIcon.alt = "Sound Off"; // Update the alt text
   }
 };
 
@@ -338,7 +352,8 @@ const showAllRecords = () => {
   document.getElementById("easy-record").textContent = `Easy Mode: ${easyRecord}`;
   document.getElementById("medium-record").textContent = `Medium Mode: ${mediumRecord}`;
   document.getElementById("hard-record").textContent = `Hard Mode: ${hardRecord}`;
-  
+
+
 };
 
 // Close the modal
@@ -350,14 +365,20 @@ const closeModal = () => {
   overlay.style.display = "none";
 };
 
-// Prevent clicks outside the modal from interacting with the background
-document.getElementById("modal-overlay").addEventListener("click", (event) => {
-  event.stopPropagation(); // Prevent propagation
-  closeModal(); // Close modal when clicking on the overlay
-});
-
 // Add event listeners
 document.getElementById("leftImg").addEventListener("click", showAllRecords);
 document.getElementById("close-modal").addEventListener("click", closeModal);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
