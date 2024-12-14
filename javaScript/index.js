@@ -183,17 +183,6 @@ document.getElementById("soundOnImg").addEventListener("click", () => {
   updateSoundIcon(); // Update the image based on the state
 });
 
-// Update the button icon based on the sound state
-// const updateSoundButton = () => {
-//   const soundButton = document.getElementById("sound-toggle");
-//   if (soundEnabled) {
-//     playSound("sounds/mouse-click-sound");
-//     soundButton.textContent = "🔊";
-//   } else {
-//     soundButton.textContent = "🔇";
-//   }
-// };
-
 // Update the sound icon based on the sound state
 const updateSoundIcon = () => {
   const soundIcon = document.getElementById("soundOnImg"); // Select the <img> element directly
@@ -259,9 +248,6 @@ document.getElementById("back-to-menu-button").addEventListener("click", () => {
   }, 500); // Adjust delay to match CSS transition
 });
 
-
-
-
 // Check the player's input against the sequence
 const checkPlayerInput = () => {
   const currentStep = playerSequence.length - 1;
@@ -279,10 +265,10 @@ const checkPlayerInput = () => {
   } else {
     if (strictMode) {
       saveHighScore(level);
-      showModal("Game Over!", true); // Show modal and restart game
+      showModal("Game Over! Lets try again", true); // Show modal and restart game
     } else {
       inGame = false;
-      showModal("Incorrect, Try again!"); // Show modal and let player try again
+      showModal("Incorrect, Lets try again!"); // Show modal and let player try again
       playerSequence = [];
     }
   }
@@ -313,11 +299,6 @@ const getHighScoreKey = () => {
       return "strictModeHighScore"; // Fallback for unexpected cases
   }
 };
-
-// Initialize and reset high score display on page load
-document.addEventListener("DOMContentLoaded", () => {
-  displayHighScore();
-});
 
 // Retrieve the high score for a specific difficulty level
 const getHighScoreForDifficulty = (difficulty) => {
@@ -352,8 +333,6 @@ const showAllRecords = () => {
   document.getElementById("easy-record").textContent = `Easy Mode: ${easyRecord}`;
   document.getElementById("medium-record").textContent = `Medium Mode: ${mediumRecord}`;
   document.getElementById("hard-record").textContent = `Hard Mode: ${hardRecord}`;
-
-
 };
 
 // Close the modal
@@ -365,20 +344,7 @@ const closeModal = () => {
   overlay.style.display = "none";
 };
 
-// Add event listeners
+// myRecord event listeners
 document.getElementById("leftImg").addEventListener("click", showAllRecords);
 document.getElementById("close-modal").addEventListener("click", closeModal);
-
-
-
-
-
-
-
-
-
-
-
-
-
 
